@@ -11,18 +11,25 @@ The primary goal of this project was to successfully deploy a Windows-based virt
 
 **Methodology and Key Steps**
 
-1. **Instance Launch**
+**1. Instance Launch**
 •	An EC2 instance was launched using a Windows Server 2019 AMI.
 •	A new key pair was generated to secure the instance, and the private key (.pem) file was downloaded.
 •	A new security group was created to control network traffic.
 
-3. **Initial Access and Troubleshooting**
-•	The instance entered a "Running" state, but the status checks remained "Initializing" for an extended period, preventing a connection.
+**2. Initial Access and Troubleshooting**
+•	The instance entered a "Running" state, but the status checks remained "Initializing" for an extended period, I waited for 45 minutes but the state didn't changed.
 
   •	**Troubleshooting Steps:**
 • Checked System Logs: I viewed the system log in the AWS Management Console, which showed the message "Windows is Ready to use." This confirmed the operating system had booted successfully, indicating the issue was not with the instance itself but with the connection.
 • Verified Security Group Rules: I checked the inbound rules of the security group to ensure that RDP traffic (port 3389) was allowed from my IP address. The rule was correctly configured.
 • Re-generated Password: I re-generated the RDP password using the private key file to ensure there were no copy-paste errors in the credentials.
+
+**3. Successful Connection**
+•	After verifying the security group and password, I try to connect and I was able to successfully connect to the instance using the Remote Desktop Connection application and the public IPv4 address.
+•	The "Initializing" status in the console persisted for a long time but did not affect the instance's functionality, highlighting a potential visual lag in the AWS console.
+
+**Outcome**
+This project successfully demonstrated the fundamental process of deploying a Windows instance in a cloud environment. It also provided valuable, hands-on experience in cloud troubleshooting, where external factors (like console display delays) can sometimes be mistaken for internal system failures.
 
 
 
